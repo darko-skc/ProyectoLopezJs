@@ -152,8 +152,32 @@ const ver_precio_carrito = (precio) =>{
     }
 
     price_container.appendChild(total_carrito);
-    price_container.appendChild(total_button);
+    price_container.appendChild(total_button)
 }
 
 
+
+
+const agregarVideojuegos = () =>{
+    alert('Bienvenido a E-game');
+    alert('Por favor agregue un juego a la lista')
+    let nombreAgregar = prompt(`Ingrese el nombre del videojuego`).toUpperCase();
+
+    let precioAgregar = prompt(`Ingrese el precio del videojuego`);
+    precioAgregar = parseFloat(precioAgregar);
+
+    while(isNaN(precioAgregar)){
+        precioAgregar = prompt('Ingresaste un caracter, por favor ingresa un valor para su producto:')
+        precioAgregar = parseFloat(precioAgregar);
+    }
+
+    let plataformaAgregar = prompt(`Ingrese la plataforma soportada por el videojuego`).toUpperCase();
+
+    const nuevo_videojuego = new videojuegos(nombreAgregar,precioAgregar,plataformaAgregar);
+    alert(`Tu videojuego fue agregado a la lista general!!!!\n
+           Puedes verlo con la opcion 1 y agregarlo al carrito`)
+    return nuevo_videojuego
+}
+
+listaVideojuegos = listaVideojuegos.concat(agregarVideojuegos());
 verVideojuegos();
