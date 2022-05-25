@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    padding-top: 2rem;
+    width: 130px;
+    display: block;
+    margin: auto;
+}
+
+h2 {
+    padding: 3rem 0rem 1rem 3rem;
+}
+
+#card-container , #carrito-container , #price-container{
+    padding: 1.5rem;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.card , .carrito{
+    margin: 1.5rem;
+    width: 300px;
+    height: auto;
+    padding: 1rem;
+    background: rgb(136, 175, 168);
+    border-radius: 8px;
+}
+
+.card-image {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.card-image img , .carrito-image img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.card-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-price {
+    margin: 0.5rem;
+    display: inline-block;
+}
+
+
+#carrito-container {
+    flex-direction: column;
+}
+
+.carrito {
+    width: 400px;
+    display: flex;
+}
+
+.carrito-image {
+    width: 40%;
+    height: 80px;
+}
+
+.carrito-image img {
+    height: 100%;
+}
+
+.carrito-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 2rem;
+}
