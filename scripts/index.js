@@ -1,6 +1,7 @@
 const card_container = document.getElementById("card-container");
 const carrito_container =  document.getElementById("carrito-container");
-const price_container = document.getElementById("price-container")
+const price_container = document.getElementById("price-container");
+const append_game =  document.getElementById("append-game");
 
 class videojuegos {
     constructor(nombre,precio,plataformas){
@@ -22,6 +23,8 @@ let carritoGeneral = [];
 
 
 const verVideojuegos = ()=>{
+    card_container.innerHTML = ''
+
     listaVideojuegos.forEach((propiedad) =>{
         const card = document.createElement("div");
         card.classList.add("card");
@@ -158,26 +161,25 @@ const ver_precio_carrito = (precio) =>{
 
 
 
-const agregarVideojuegos = () =>{
-    alert('Bienvenido a E-game');
-    alert('Por favor agregue un juego a la lista')
-    let nombreAgregar = prompt(`Ingrese el nombre del videojuego`).toUpperCase();
+const agregarVideojuegos = (e) =>{
+    e.preventDefault();
+    let formulario = e.target
+    let name = formulario.children[1].value
+    let platform = formulario.children[3].value
+    let price = formulario.children[5].value
+    
+    name = name.toUpperCase();
+    platform = platform.toUpperCase();
+    price = parseFloat(price);
+    const nuevo_videojuego = new videojuegos(name,price,platform);
+    
+    listaVideojuegos = listaVideojuegos.concat(nuevo_videojuego);
 
-    let precioAgregar = prompt(`Ingrese el precio del videojuego`);
-    precioAgregar = parseFloat(precioAgregar);
-
-    while(isNaN(precioAgregar)){
-        precioAgregar = prompt('Ingresaste un caracter, por favor ingresa un valor para su producto:')
-        precioAgregar = parseFloat(precioAgregar);
-    }
-
-    let plataformaAgregar = prompt(`Ingrese la plataforma soportada por el videojuego`).toUpperCase();
-
-    const nuevo_videojuego = new videojuegos(nombreAgregar,precioAgregar,plataformaAgregar);
-    alert(`Tu videojuego fue agregado a la lista general!!!!\n
-           Puedes verlo con la opcion 1 y agregarlo al carrito`)
-    return nuevo_videojuego
+    console.log(listaVideojuegos);
+    
+    verVideojuegos();
 }
 
-listaVideojuegos = listaVideojuegos.concat(agregarVideojuegos());
+const nuevo_videojuego = append_game.addEventListener("submit", agregarVideojuegos);
+
 verVideojuegos();
